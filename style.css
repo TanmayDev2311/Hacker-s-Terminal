@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #333;
+    color: #39FF14;
+    font-family: Consolas, "Liberation Mono", "Courier New", monospace;
+}
+.window{
+    border: 2px solid #333;
+    background-color: black;
+    margin: 70px;
+    border-radius: 6px;
+    min-height: 75vh;
+    padding: 30px;
+    box-shadow: 0px 0px 18px 9px;
+
+}
+.message{
+    line-height: 3.5rem;
+    font-size: 1.70rem;
+}
