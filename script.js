@@ -11,23 +11,36 @@ let commands = {
 }
 
 //patterns in array form for the loader
-const patterns = ["", ".", "..", "..."]
+// const patterns = ["", ".", "..", "..."]
 
 //creating the loader element
-let dots = document.createElement("span")
+// let dots = document.createElement("span")
 
 //index to iterate over the patterns array in continuous cycle
-let index = 0
+// let index = 0
 
 //function to update/animate the loader
-async function loader() {
-    return new Promise((resolve, reject) => {
+// async function loader() {
+//     return new Promise((resolve, reject) => {
 
-        dots.textContent = patterns[index];
-        index = (index + 1) % patterns.length;
-        resolve()
-    })
-}
+//         dots.textContent = patterns[index];
+//         index = (index + 1) % patterns.length;
+//         resolve()
+//     })
+// }
+
+let a = setInterval(() => {
+    let last = document.querySelector(".window").lastElementChild;
+    if(last.innerHTML.endsWith("...")){
+        last.innerHTML = last.innerHTML.slice(0,last.innerHTML.length-3)
+    }
+    else{
+
+        last.innerHTML = last.innerHTML + "."
+    }
+}, 500);
+
+
 
 //Function to insert message as string in terminal after random delays
 async function printer(message) {
@@ -44,8 +57,8 @@ async function printer(message) {
         //append the message+loader after random delay
         setTimeout(() => {
             document.querySelector(".window").append(temp)
-            temp.append(dots)
-            setInterval(loader, 800);
+            // temp.append(dots)
+            // setInterval(loader, 800);
             resolve();
         }, rand);
 
@@ -58,5 +71,6 @@ async function main() {
         const element = commands[i];
         await printer(element)
     }
+    clearInterval(a)
 }
 main()
